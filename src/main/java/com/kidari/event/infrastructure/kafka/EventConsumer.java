@@ -58,9 +58,9 @@ public class EventConsumer {
             }
 
         } catch (Exception e) {
-            log.error("비즈니스 로직 처리 에러: traceId={}", coinIssueCommand.getTraceId(), e);
+            log.error("consumeCoinRequest 실패: traceId={}", coinIssueCommand.getTraceId(), e);
             updateTraceLog(coinIssueCommand.getTraceId(), HttpStatus.INTERNAL_SERVER_ERROR.value(), null, e.getMessage());
-
+            throw new RuntimeException(e);
         }
     }
 
@@ -94,8 +94,9 @@ public class EventConsumer {
             }
 
         } catch (Exception e) {
-            log.error("Error processing regist coupon event message: {}", message, e);
+            log.error("consumeCouponRequest 실패: {}", message, e);
             updateTraceLog(registCouponEventCommand.getTraceId(), HttpStatus.INTERNAL_SERVER_ERROR.value(), null,e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
