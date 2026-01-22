@@ -22,14 +22,28 @@ public class EventController {
     private final EventService eventService;
     private final EventApplicationService eventApplicationService;
 
-    //소유한 응모 코인으로 특정 휴가쿠폰 응모요청 API
+    /**
+     * 쿠폰 응모 요청 API
+     *
+     * 사용자가 보유한 코인을 사용하여 특정 이벤트 쿠폰에 응모합니다.
+     *
+     * @param request 쿠폰 응모 요청 정보 (사용자 ID, 이벤트 ID, 쿠폰 ID)
+     * @return 성공 메시지
+     */
     @PostMapping("/coupons")
     public CommonResponse<String> applyCouponEvent(@Valid @RequestBody CouponEventApplyRequestDto request) {
         eventApplicationService.applyCouponEvent(request.toCommand());
         return CommonResponse.success("쿠폰응모 신청 요청 완료");
     }
 
-    //휴가쿠폰 응모 이벤트 취소 API
+    /**
+     * 쿠폰 응모 취소 API
+     *
+     * 기존에 신청한 쿠폰 응모 내역을 취소하고 사용된 코인을 반환합니다.
+     *
+     * @param eventApplicationId 취소할 이벤트 응모 ID
+     * @return 성공 메시지 (취소 완료)
+     */
     @PatchMapping("/coupons/{eventApplicationId}/cancel")
     public CommonResponse<String> cancelCouponEvent(@PathVariable("eventApplicationId") Long eventApplicationId) {
 
@@ -41,7 +55,15 @@ public class EventController {
 
     }
 
-    //특정 사용자의 쿠폰이벤트 응모현황 조회 API
+    /**
+     * 내 응모 현황 조회 API
+     *
+     * 특정 사용자의 쿠폰 이벤트 응모 내역을 페이징하여 조회합니다.
+     *
+     * @param eventApplicationSearchConditionDto 검색 조건 (사용자 ID 등)
+     * @param pageable 페이징 정보
+     * @return 사용자 응모 내역 리스트 (페이징 포함)
+     */
     @GetMapping("/applications")
     public CommonResponse<PageResponse<UserEventApplicationResponseDto>> getMyEventApplications(
             @Valid @ModelAttribute EventApplicationSearchConditionDto eventApplicationSearchConditionDto

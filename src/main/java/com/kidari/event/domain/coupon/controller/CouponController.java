@@ -21,7 +21,15 @@ public class CouponController {
 
     private final CouponService couponService;
 
-    //휴가 쿠폰별 전체 응모 현황을 조회 API
+    /**
+     * 쿠폰별 응모 현황 조회 API
+     *
+     * 특정 쿠폰 그룹 및 타입에 대한 전체 사용자 응모 현황을 통계로 조회합니다.
+     *
+     * @param couponApplicationStatRequestDto 통계 검색 조건
+     * @param pageable 페이징 정보
+     * @return 쿠폰별 응모 통계 리스트
+     */
     @GetMapping("/events/stats")
     public CommonResponse<PageResponse<EventCouponStatResponseDto>> getCouponApplicationStat(
             @Valid @ModelAttribute CouponApplicationStatSearchConditionDto couponApplicationStatRequestDto
