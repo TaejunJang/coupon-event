@@ -1,0 +1,32 @@
+services:
+  # 카프카 브로커 서비스 (KRaft 모드: Zookeeper 없이 동작)
+  kafka:
+    image: apache/kafka:3.7.0             # Bitnami에서 제공하는 Kafka 최신 이미지 사용
+    container_name: kafka-local           # 컨테이너 이름을 'kafka-local'로 고정
+    ports:
+      - "9092:9092"                       # 호스트(내 컴퓨터)의 9092 포트를 컨테이너의 9092 포트와 연결
+    environment:
+      - KAFKA_NODE_ID=1
+      - KAFKA_PROCESS_ROLES=broker,controller
+      - KAFKA_LISTENERS=PLAINTEXT://:29092,CONTROLLER://:9093,EXTERNAL://:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka-local:29092,EXTERNAL://localhost:9092
+      - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CONTROLLER_QUORUM_VOTERS=1@localhost:9093
+      - KAFKA_OFFLINE_LOG_DIRS=/tmp/kraft-combined-logs
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+
+  # 카프카 웹 UI 서비스
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest  # Kafka UI 최신 이미지 사용
+    container_name: kafka-ui              # 컨테이너 이름 지정
+    ports:
+      - "8989:8080"                       # 호스트의 8989 포트로 접속 (http://localhost:8989)
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=local       # UI에 표시될 클러스터 이름 ('local')
+      # UI가 접속할 카프카 주소 (도커 내부 통신이므로 kafka-local:29092 사용)
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-local:29092
+    depends_on:
+      - kafka                             # kafka 서비스가 먼저 실행된 후 실행되도록 설정
