@@ -2,13 +2,12 @@ package com.kidari.event.domain.event.repository;
 
 
 import com.kidari.event.domain.coin.service.command.EventCoinStatInquiryCommand;
-import com.kidari.event.domain.entity.QEvent;
+import com.kidari.event.domain.event.entity.QEvent;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.AllArgsConstructor;
 
-import static com.kidari.event.domain.entity.QCoinIssuance.coinIssuance;
-import static com.kidari.event.domain.entity.QEvent.event;
+import static com.kidari.event.domain.event.entity.QEvent.event;
 
 @AllArgsConstructor
 public class EventRepositoryCustomImpl implements EventRepositoryCustom {

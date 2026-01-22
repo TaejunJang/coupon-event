@@ -1,9 +1,5 @@
 package com.kidari.event.common;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
-
 public final class Constant {
 
     private Constant() {}

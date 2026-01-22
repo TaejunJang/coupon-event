@@ -1,6 +1,6 @@
 package com.kidari.event.domain.apiTrace.service.dto;
 
-import com.kidari.event.domain.entity.ApiTraceLog;
+import com.kidari.event.domain.apiTrace.entity.ApiTraceLog;
 import lombok.Builder;
 import lombok.Getter;
 

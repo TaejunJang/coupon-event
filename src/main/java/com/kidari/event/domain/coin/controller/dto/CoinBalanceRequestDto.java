@@ -2,9 +2,7 @@ package com.kidari.event.domain.coin.controller.dto;
 
 import com.kidari.event.common.Constant;
 import com.kidari.event.domain.coin.service.command.CoinBalanceCommand;
-import com.kidari.event.domain.coin.service.command.CoinIssuanceCommand;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

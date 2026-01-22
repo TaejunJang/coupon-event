@@ -1,4 +1,4 @@
-package com.kidari.event.domain.entity;
+package com.kidari.event.domain.event.entity;
 
 import com.kidari.event.common.Constant;
 import com.kidari.event.domain.entity.BaseTimeEntity;

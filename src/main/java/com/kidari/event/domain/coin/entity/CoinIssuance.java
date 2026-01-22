@@ -1,6 +1,9 @@
-package com.kidari.event.domain.entity;
+package com.kidari.event.domain.coin.entity;
 
 import com.kidari.event.common.Constant;
+import com.kidari.event.domain.entity.BaseTimeEntity;
+import com.kidari.event.domain.event.entity.Event;
+import com.kidari.event.domain.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -15,7 +18,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @BatchSize(size = 100)
 @DynamicUpdate
-public class CoinIssuance extends BaseTimeEntity{
+public class CoinIssuance extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

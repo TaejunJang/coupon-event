@@ -1,11 +1,16 @@
 package com.kidari.event.domain.event.service;
 
-import com.kidari.event.common.api.BusinessResultResponse;
 import com.kidari.event.common.Constant;
+import com.kidari.event.common.api.BusinessResultResponse;
 import com.kidari.event.common.api.PageResponse;
+import com.kidari.event.domain.coin.entity.CoinIssuance;
 import com.kidari.event.domain.coin.repository.CoinIssuanceRepository;
+import com.kidari.event.domain.coupon.entity.Coupon;
 import com.kidari.event.domain.coupon.repository.CouponRepository;
-import com.kidari.event.domain.entity.*;
+import com.kidari.event.domain.event.entity.Event;
+import com.kidari.event.domain.event.entity.EventApplication;
+import com.kidari.event.domain.event.port.out.CouponApplyEvent;
+import com.kidari.event.domain.event.port.out.CouponEventMessagePort;
 import com.kidari.event.domain.event.repository.EventApplicationRepository;
 import com.kidari.event.domain.event.repository.EventRepository;
 import com.kidari.event.domain.event.service.command.CouponEventApplyCommand;
@@ -13,9 +18,8 @@ import com.kidari.event.domain.event.service.command.CouponEventCancelCommand;
 import com.kidari.event.domain.event.service.command.RegistCouponEventCommand;
 import com.kidari.event.domain.event.service.command.UserEventApplicationInquiryCommand;
 import com.kidari.event.domain.event.service.dto.UserEventApplicationResponseDto;
+import com.kidari.event.domain.member.entity.Member;
 import com.kidari.event.domain.member.repository.MemberRepository;
-import com.kidari.event.domain.port.out.CouponApplyEvent;
-import com.kidari.event.domain.port.out.EventPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
@@ -39,20 +43,20 @@ public class EventApplicationService {
     private final MemberRepository memberRepository;
     private final CouponRepository couponRepository;
     private final EventApplicationRepository eventApplicationRepository;
-    private final EventPort eventPort;
+    private final CouponEventMessagePort couponEventMessagePort;
 
     public void applyCouponEvent(CouponEventApplyCommand command) {
         log.info("Requesting coupon event apply for member: {}, eventId: {}", command.getUserId(), command.getEventId());
 
         CouponApplyEvent event = CouponApplyEvent.builder()
-                .traceId(MDC.get("traceId"))
-                .userId(command.getUserId())
-                .eventId(command.getEventId())
-                .couponId(command.getCouponId())
-                .eventTime(LocalDateTime.now())
-                .build();
+                                                 .traceId(MDC.get("traceId"))
+                                                 .userId(command.getUserId())
+                                                 .eventId(command.getEventId())
+                                                 .couponId(command.getCouponId())
+                                                 .eventTime(LocalDateTime.now())
+                                                 .build();
 
-        eventPort.sendCouponEventApplyRequest(event);
+        couponEventMessagePort.sendCouponEventApplyRequest(event);
     }
 
 

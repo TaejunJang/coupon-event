@@ -1,7 +1,7 @@
 package com.kidari.event.domain.event.repository;
 
 import com.kidari.event.common.Constant;
-import com.kidari.event.domain.entity.Event;
+import com.kidari.event.domain.event.entity.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

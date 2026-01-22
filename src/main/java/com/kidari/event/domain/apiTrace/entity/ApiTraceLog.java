@@ -1,7 +1,11 @@
-package com.kidari.event.domain.entity;
+package com.kidari.event.domain.apiTrace.entity;
 
 
-import jakarta.persistence.*;
+import com.kidari.event.domain.entity.BaseTimeEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +17,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicUpdate
-public class ApiTraceLog extends BaseTimeEntity{
+public class ApiTraceLog extends BaseTimeEntity {
 
     @Id
     private String traceId;

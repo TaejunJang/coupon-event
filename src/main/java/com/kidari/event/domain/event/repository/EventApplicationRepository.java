@@ -1,6 +1,6 @@
 package com.kidari.event.domain.event.repository;
 
-import com.kidari.event.domain.entity.EventApplication;
+import com.kidari.event.domain.event.entity.EventApplication;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,6 +1,10 @@
-package com.kidari.event.domain.entity;
+package com.kidari.event.domain.event.entity;
 
 import com.kidari.event.common.Constant;
+import com.kidari.event.domain.coin.entity.CoinIssuance;
+import com.kidari.event.domain.coupon.entity.Coupon;
+import com.kidari.event.domain.entity.BaseTimeEntity;
+import com.kidari.event.domain.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -15,7 +19,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicUpdate
-public class EventApplication extends BaseTimeEntity{
+public class EventApplication extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

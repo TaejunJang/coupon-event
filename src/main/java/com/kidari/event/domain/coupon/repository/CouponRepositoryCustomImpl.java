@@ -12,14 +12,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.support.PageableExecutionUtils;
 
-import java.time.LocalDate;
 import java.util.List;
 
-import static com.kidari.event.domain.entity.QCoinIssuance.coinIssuance;
-import static com.kidari.event.domain.entity.QCoupon.coupon;
-import static com.kidari.event.domain.entity.QEvent.event;
-import static com.kidari.event.domain.entity.QEventApplication.eventApplication;
-import static com.kidari.event.domain.entity.QMember.member;
+import static com.kidari.event.domain.coupon.entity.QCoupon.coupon;
+import static com.kidari.event.domain.event.entity.QEvent.event;
+import static com.kidari.event.domain.event.entity.QEventApplication.eventApplication;
+import static com.kidari.event.domain.member.entity.QMember.member;
 
 @RequiredArgsConstructor
 public class CouponRepositoryCustomImpl implements CouponRepositoryCustom {

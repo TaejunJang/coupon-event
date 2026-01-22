@@ -1,6 +1,8 @@
-package com.kidari.event.domain.entity;
+package com.kidari.event.domain.coupon.entity;
 
 import com.kidari.event.common.Constant;
+import com.kidari.event.domain.entity.BaseTimeEntity;
+import com.kidari.event.domain.event.entity.Event;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -13,7 +15,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicUpdate
-public class Coupon extends BaseTimeEntity{
+public class Coupon extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

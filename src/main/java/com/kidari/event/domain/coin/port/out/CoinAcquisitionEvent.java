@@ -1,4 +1,4 @@
-package com.kidari.event.domain.port.out;
+package com.kidari.event.domain.coin.port.out;
 
 import lombok.Builder;
 import lombok.Getter;

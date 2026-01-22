@@ -14,9 +14,9 @@ import org.springframework.data.support.PageableExecutionUtils;
 
 import java.util.List;
 
-import static com.kidari.event.domain.entity.QCoinIssuance.coinIssuance;
-import static com.kidari.event.domain.entity.QEvent.event;
-import static com.kidari.event.domain.entity.QMember.member;
+import static com.kidari.event.domain.coin.entity.QCoinIssuance.coinIssuance;
+import static com.kidari.event.domain.event.entity.QEvent.event;
+import static com.kidari.event.domain.member.entity.QMember.member;
 
 @RequiredArgsConstructor
 public class CoinIssuanceRepositoryCustomImpl implements CoinIssuanceRepositoryCustom {

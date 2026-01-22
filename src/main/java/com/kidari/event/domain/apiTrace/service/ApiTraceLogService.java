@@ -1,10 +1,10 @@
 package com.kidari.event.domain.apiTrace.service;
 
+import com.kidari.event.domain.apiTrace.entity.ApiTraceLog;
 import com.kidari.event.domain.apiTrace.repository.ApiTraceLogRepository;
-import com.kidari.event.domain.apiTrace.service.dto.ApiTraceLogResponseDto;
 import com.kidari.event.domain.apiTrace.service.command.ApiTraceSaveCommand;
 import com.kidari.event.domain.apiTrace.service.command.ApiTraceUpdateCommand;
-import com.kidari.event.domain.entity.ApiTraceLog;
+import com.kidari.event.domain.apiTrace.service.dto.ApiTraceLogResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

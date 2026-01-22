@@ -1,7 +1,7 @@
 package com.kidari.event.domain.coin.repository;
 
 import com.kidari.event.common.Constant;
-import com.kidari.event.domain.entity.CoinIssuance;
+import com.kidari.event.domain.coin.entity.CoinIssuance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

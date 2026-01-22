@@ -1,8 +1,11 @@
 package com.kidari.event.domain.coin.service;
 
-import com.kidari.event.common.api.BusinessResultResponse;
 import com.kidari.event.common.Constant;
+import com.kidari.event.common.api.BusinessResultResponse;
 import com.kidari.event.common.api.PageResponse;
+import com.kidari.event.domain.coin.entity.CoinIssuance;
+import com.kidari.event.domain.coin.port.out.CoinAcquisitionEvent;
+import com.kidari.event.domain.coin.port.out.CoinMessagePort;
 import com.kidari.event.domain.coin.repository.CoinIssuanceRepository;
 import com.kidari.event.domain.coin.service.command.CoinBalanceCommand;
 import com.kidari.event.domain.coin.service.command.CoinIssuanceCommand;
@@ -11,13 +14,10 @@ import com.kidari.event.domain.coin.service.command.EventCoinStatInquiryCommand;
 import com.kidari.event.domain.coin.service.dto.CoinBalanceResponseDto;
 import com.kidari.event.domain.coin.service.dto.EventCoinStatResponseDto;
 import com.kidari.event.domain.coin.service.dto.UserCoinBalanceStatResponseDto;
-import com.kidari.event.domain.entity.CoinIssuance;
-import com.kidari.event.domain.entity.Event;
-import com.kidari.event.domain.entity.Member;
+import com.kidari.event.domain.event.entity.Event;
 import com.kidari.event.domain.event.repository.EventRepository;
+import com.kidari.event.domain.member.entity.Member;
 import com.kidari.event.domain.member.repository.MemberRepository;
-import com.kidari.event.domain.port.out.CoinAcquisitionEvent;
-import com.kidari.event.domain.port.out.EventPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
@@ -35,7 +35,7 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class CoinService {
 
-    private final EventPort eventPort;
+    private final CoinMessagePort messagePort;
     private final CoinIssuanceRepository coinIssuanceRepository;
     private final EventRepository eventRepository;
     private final MemberRepository memberRepository;
@@ -44,13 +44,13 @@ public class CoinService {
         log.info("Requesting event coin for member: {}, eventId: {}", command.getUserId(), command.getEventId());
 
         CoinAcquisitionEvent event = CoinAcquisitionEvent.builder()
-                .traceId(MDC.get("traceId"))
-                .userId(command.getUserId())
-                .eventId(command.getEventId())
-                .eventTime(LocalDateTime.now())
-                .build();
+                                                         .traceId(MDC.get("traceId"))
+                                                         .userId(command.getUserId())
+                                                         .eventId(command.getEventId())
+                                                         .eventTime(LocalDateTime.now())
+                                                         .build();
 
-        eventPort.sendCoinAcquisitionRequest(event);
+        messagePort.sendCoinAcquisitionRequest(event);
     }
 
 

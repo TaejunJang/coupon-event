@@ -1,7 +1,9 @@
 package com.kidari.event.domain.coupon.service.command;
 
 import com.kidari.event.common.Constant;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 
 @Getter
 @Builder

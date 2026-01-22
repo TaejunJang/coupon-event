@@ -2,7 +2,10 @@ package com.kidari.event.domain.coupon.controller.dto;
 
 import com.kidari.event.common.Constant;
 import com.kidari.event.domain.coupon.service.command.CouponApplicationStatInquiryCommand;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
