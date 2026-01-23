@@ -1,4 +1,4 @@
-# Kidari Coupon Event Application Service
+# Coupon Event Application Service
 
 이 프로젝트는 대규모 트래픽을 고려한 **이벤트 응모코인 획득 쿠폰이벤트 신청 시스템**입니다. 
 사용자에게 코인을 지급하고, 획득한 코인으로 이벤트 쿠폰에 응모할 수 있는 기능을 제공합니다.
